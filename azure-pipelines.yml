@@ -8,12 +8,9 @@ variables:
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'myTestEnvironment'
 
-- name: TerraformBackend.ResourceGroup
-  value: azuredevops
-- name: TerraformBackend.StorageAccount
-  value: storagefree1231
-- name: TerraformBackend.ContainerName
-  value: mycontainer
+  TerraformBackend.ResourceGroup: 'azuredevops'
+  TerraformBackend.StorageAccount: 'storagefree1231'
+  TerraformBackend.ContainerName: 'mycontainer'
 
 stages:
 - stage: Build
@@ -48,7 +45,7 @@ stages:
         backendAzureRmResourceGroupName: $(TerraformBackend.ResourceGroup)
         backendAzureRmStorageAccountName: $(TerraformBackend.StorageAccount)
         backendAzureRmContainerName: '$(TerraformBackend.ContainerName)'
-        backendKey: 'terraform.tfstate'
+        backendAzureRmKey: 'terraform.tfstate'
 
 
     - task: TerraformTaskV1@0
