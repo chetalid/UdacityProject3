@@ -16,12 +16,12 @@ stages:
     #     sshKeySecureFile: 'id_rsa'
     
     # terraform install and apply
-    - task: TerraformInstaller
+    - task: TerraformInstaller@1
       displayName: install terraform
       inputs:
         terraformVersion: 1.2.7
     
-    - task: TerraformCLI@0
+    - task: TerraformCLI@2
       displayName: 'check terraform version'
       inputs:
         command: version
