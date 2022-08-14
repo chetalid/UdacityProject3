@@ -16,16 +16,18 @@ stages:
     #     sshKeySecureFile: 'id_rsa'
     
     # terraform install and apply
-    - task: TerraformInstaller@1
-      displayName: install terraform
+    - task: TerraformInstaller@0
+      displayName: 'Install Terraform'
       inputs:
-        terraformVersion: 1.2.7
+        terraformVersion: '1.2.7'
     
-    - task: TerraformCLI@2
-      displayName: 'check terraform version'
+    - task: TerraformTaskV1@0
+      displayName: 'Initialize Terraform'
       inputs:
-        command: version
-    
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
+            
     - task: TerraformCLI@3
       displayName: 'terraform apply'
       inputs:
