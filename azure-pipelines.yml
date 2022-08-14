@@ -46,7 +46,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
-        backendServiceArm: 'anja-subscription-service-connection'
+        backendServiceArm: 'Free Trial'
         backendAzureRmResourceGroupName: 'azuredevops'
         backendAzureRmStorageAccountName: 'storagefree1231'
         backendAzureRmContainerName: 'mycontainer'
