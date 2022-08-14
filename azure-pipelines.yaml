@@ -15,29 +15,6 @@ stages:
     #     sshPublicKey: 'PUBLIC_KEY'
     #     sshKeySecureFile: 'id_rsa'
     
-    # terraform install and apply
-    - task: TerraformInstaller@0
-      displayName: 'Install Terraform'
-      inputs:
-        terraformVersion: '1.2.7'
-    
-    - task: TerraformTaskV1@0
-      displayName: 'Initialize Terraform'
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
-            
-    - task: TerraformCLI@3
-      displayName: 'terraform apply'
-      inputs:
-        command: apply
-        environmentServiceName: 'servconn'
-        providerAzureRmSubscriptionId: '09b22bb3-8da4-418b-a14e-087a777b0654'
-    
-    
-    
-    
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
