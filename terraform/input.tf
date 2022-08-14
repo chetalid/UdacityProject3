@@ -1,5 +1,16 @@
 # Azure GUIDS
-
+variable "subscription_id" {
+    description = "this is subscription_id for resource group"
+}
+variable "client_id" {
+    description = "this is client_idfor resource group"
+}
+variable "client_secret" {
+    description = "this is client_secret for resource group"
+}
+variable "tenant_id" {
+    description = "this is tenant id for resource group"
+}
 
 # Resource Group/Location
 variable "location" {
