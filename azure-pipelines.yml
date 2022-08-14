@@ -50,7 +50,6 @@ stages:
         provider: 'azurerm'
         command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        commandOptions: '-auto-approve'
         environmentServiceNameAzureRM: 'servconn'
 
     - task: ArchiveFiles@2
