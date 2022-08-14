@@ -36,7 +36,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         commandOptions: '-reconfigure'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         backendServiceArm: 'servconn'
         backendAzureRmResourceGroupName: 'azuredevops'
         backendAzureRmStorageAccountName: 'storagefree1231'
@@ -44,7 +44,7 @@ stages:
         backendAzureRmKey: 'terraform.tfstate'
 
 
-    - task: TerraformTaskV1@0
+    - task: TerraformTaskV2@2
       displayName: 'Deploy Cloud Infrastructure'
       inputs:
         provider: 'azurerm'
