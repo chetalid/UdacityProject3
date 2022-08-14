@@ -4,7 +4,7 @@ variables:
   azureServiceConnectionId: '09b22bb3-8da4-418b-a14e-087a777b0654'
   python.version: '3.7.6'
   vmImageName: 'myVM'
-  webAppName: 'AppService-AppService'
+  webAppName: 'TestWebAppService'
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'myTestEnvironment'
 
