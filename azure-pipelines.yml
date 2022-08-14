@@ -1,22 +1,19 @@
 name: Azure Pipelines
 variables:
-  # Azure Resource Manager service connection for pipelines
+
   azureServiceConnectionId: '09b22bb3-8da4-418b-a14e-087a777b0654'
-
-  # Python version: 3.7.6
   python.version: '3.7.6'
-
-  # Agent VM image name
   vmImageName: 'myVM'
-
-  # Web app name
   webAppName: 'AppService-AppService'
-
-  # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
-
-  # Environment name
   environmentName: 'myTestEnvironment'
+
+- name: TerraformBackend.ResourceGroup
+  value: azuredevops
+- name: TerraformBackend.StorageAccount
+  value: storagefree1231
+- name: TerraformBackend.ContainerName
+  value: mycontainer
 
 stages:
 - stage: Build
@@ -47,11 +44,12 @@ stages:
         command: 'init'
         commandOptions: '-reconfigure'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
-        backendService: 'servconn'
-        backendResourceGroupName: 'azuredevops'
-        backendStorageAccountName: 'storagefree1231'
-        backendContainerName: 'mycontainer'
+        backendServiceArm: 'servconn'
+        backendAzureRmResourceGroupName: $(TerraformBackend.ResourceGroup)
+        backendAzureRmStorageAccountName: $(TerraformBackend.StorageAccount)
+        backendAzureRmContainerName: '$(TerraformBackend.ContainerName)'
         backendKey: 'terraform.tfstate'
+
 
     - task: TerraformTaskV1@0
       displayName: 'Deploy Cloud Infrastructure'
