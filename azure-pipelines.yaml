@@ -6,7 +6,7 @@ stages:
   jobs:
   - job: Build
     pool:
-      vmImageName: 'myVM'
+      vmImage: ubuntu-latest
     steps:
     # Needed for Terraform VM deployment
     # - task: InstallSSHKey@0
@@ -28,8 +28,11 @@ stages:
   jobs:
   - deployment: FakeRestAPI
     pool:
-      vmImageName: 'myVM'
-    environment: 'myTestEnvironment'
+      vmImage: ubuntu-latest
+    environment:
+      name: myTestEnvironment
+      resourceType: VirtualMachine
+      tags: myvm
     strategy:
       runOnce:
         deploy:
