@@ -4,7 +4,7 @@ variables:
   azureServiceConnectionId: '09b22bb3-8da4-418b-a14e-087a777b0654'
   python.version: '3.7.6'
   vmImageName: 'myVM'
-  webAppName: 'TestWebAppService'
+  webAppName: 'AppService-AppService'
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'myTestEnvironment'
 
@@ -74,7 +74,7 @@ stages:
     displayName: 'Deploy app to custom VM'
     pool:
       vmImage: ubuntu-20.04
-    environment: 'myTestEnvironment'
+    environment: 'myTestEnvironment'  
     strategy:
       runOnce:
         deploy:
