@@ -8,10 +8,6 @@ variables:
   projectRoot: $(System.DefaultWorkingDirectory)
   environmentName: 'myTestEnvironment'
 
-  TerraformBackend.ResourceGroup: 'azuredevops'
-  TerraformBackend.StorageAccount: 'storagefree1231'
-  TerraformBackend.ContainerName: 'mycontainer'
-
 stages:
 - stage: Build
   jobs:
@@ -42,9 +38,9 @@ stages:
         commandOptions: '-reconfigure'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
         backendServiceArm: 'servconn'
-        backendAzureRmResourceGroupName: $(TerraformBackend.ResourceGroup)
-        backendAzureRmStorageAccountName: $(TerraformBackend.StorageAccount)
-        backendAzureRmContainerName: '$(TerraformBackend.ContainerName)'
+        backendAzureRmResourceGroupName: 'azuredevops'
+        backendAzureRmStorageAccountName: 'storagefree1231'
+        backendAzureRmContainerName: 'mycontainer'
         backendAzureRmKey: 'terraform.tfstate'
 
 
