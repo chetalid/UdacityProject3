@@ -47,11 +47,11 @@ stages:
         command: 'init'
         commandOptions: '-reconfigure'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environment/test'
-        backendServiceArm: 'servconn'
-        backendAzureRmResourceGroupName: 'azuredevops'
-        backendAzureRmStorageAccountName: 'storagefree1231'
-        backendAzureRmContainerName: 'mycontainer'
-        backendAzureRmKey: 'terraform.tfstate'
+        backendService: 'servconn'
+        backendResourceGroupName: 'azuredevops'
+        backendStorageAccountName: 'storagefree1231'
+        backendContainerName: 'mycontainer'
+        backendKey: 'terraform.tfstate'
 
     - task: TerraformTaskV1@0
       displayName: 'Deploy Cloud Infrastructure'
