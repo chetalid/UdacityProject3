@@ -18,6 +18,8 @@ stages:
     # terraform install and apply
     - task: TerraformInstaller
       displayName: install terraform
+      inputs:
+        terraformVersion: 1.2.7
     
     - task: TerraformCLI@0
       displayName: 'check terraform version'
