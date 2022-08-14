@@ -14,7 +14,12 @@ stages:
     #     knownHostsEntry: 'KNOWN_HOSTS_STRING'
     #     sshPublicKey: 'PUBLIC_KEY'
     #     sshKeySecureFile: 'id_rsa'
-    
+    # Step 1: Install Terraform
+    - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+      displayName: 'Install Terraform 1.2.7'
+      inputs:
+        terraformVersion: 1.2.7
+
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
